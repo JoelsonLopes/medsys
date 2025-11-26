@@ -137,6 +137,7 @@ export function TestimonialsSection() {
               size="icon"
               className="border-primary/20 hover:bg-primary/5 hover:text-primary h-12 w-12 rounded-full"
               onClick={scrollPrev}
+              aria-label="Depoimento anterior"
             >
               <ChevronLeft className="h-5 w-5" />
             </Button>
@@ -145,6 +146,7 @@ export function TestimonialsSection() {
               size="icon"
               className="border-primary/20 hover:bg-primary/5 hover:text-primary h-12 w-12 rounded-full"
               onClick={scrollNext}
+              aria-label="Próximo depoimento"
             >
               <ChevronRight className="h-5 w-5" />
             </Button>

@@ -40,11 +40,11 @@ export function ParticlesBg() {
         interactivity: {
           events: {
             onClick: {
-              enable: true,
+              enable: false, // Disabled for performance
               mode: 'push'
             },
             onHover: {
-              enable: true,
+              enable: false, // Disabled for performance
               mode: 'repulse'
             },
             resize: {
@@ -88,7 +88,7 @@ export function ParticlesBg() {
               width: 800,
               height: 800
             },
-            value: 60
+            value: 30 // Reduced from 60
           },
           opacity: {
             value: 0.3
