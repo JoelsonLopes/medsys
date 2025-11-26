@@ -3,17 +3,19 @@ import Link from 'next/link'
 
 export function Logo() {
   return (
-    <Link href="/" className="group flex items-center gap-2">
-      <div className="relative h-14 w-auto">
+    <Link href="/" className="group flex items-center gap-3">
+      <div className="relative h-10 w-10">
         <Image
-          src="/assets/LOGO-MEDSYS.png"
+          src="/assets/logo-medsys.png"
           alt="MedSys Logo"
-          width={210}
-          height={56}
-          className="h-full w-auto object-contain"
+          fill
+          className="object-contain"
           priority
         />
       </div>
+      <span className="font-jakarta text-foreground text-xl font-bold tracking-tight">
+        Med<span className="text-primary">sys</span>
+      </span>
     </Link>
   )
 }
