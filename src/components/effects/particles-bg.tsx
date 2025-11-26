@@ -1,6 +1,6 @@
 'use client'
 
-import { type Container, type Engine } from '@tsparticles/engine'
+import { type Engine } from '@tsparticles/engine'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 import { useTheme } from 'next-themes'
@@ -18,8 +18,7 @@ export function ParticlesBg() {
     })
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
-    // console.log(container)
+  const particlesLoaded = useCallback(async () => {
     return Promise.resolve()
   }, [])
 
