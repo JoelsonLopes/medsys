@@ -14,10 +14,8 @@ import { Footer } from '@/components/shared/footer'
 import { Navbar } from '@/components/shared/navbar'
 import dynamic from 'next/dynamic'
 
-const ParticlesBg = dynamic(
-  () =>
-    import('@/components/effects/particles-bg').then((mod) => mod.ParticlesBg),
-  { ssr: false }
+const ParticlesBg = dynamic(() =>
+  import('@/components/effects/particles-bg').then((mod) => mod.ParticlesBg)
 )
 
 export default function Home() {
