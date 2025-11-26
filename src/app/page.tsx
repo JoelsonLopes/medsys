@@ -1,5 +1,4 @@
 import { GradientBlur } from '@/components/effects/gradient-blur'
-import { ParticlesBg } from '@/components/effects/particles-bg'
 import { Spotlight } from '@/components/effects/spotlight'
 import { BenefitsSection } from '@/components/sections/benefits-section'
 import { CtaSection } from '@/components/sections/cta-section'
@@ -13,6 +12,13 @@ import { SolutionSection } from '@/components/sections/solution-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { Footer } from '@/components/shared/footer'
 import { Navbar } from '@/components/shared/navbar'
+import dynamic from 'next/dynamic'
+
+const ParticlesBg = dynamic(
+  () =>
+    import('@/components/effects/particles-bg').then((mod) => mod.ParticlesBg),
+  { ssr: false }
+)
 
 export default function Home() {
   return (
