@@ -1,5 +1,9 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { WhatsAppButton } from '@/components/shared/whatsapp-button'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
+import { ThemeProvider } from '../components/theme-provider'
 import './globals.css'
 
 const inter = Inter({
@@ -21,6 +25,10 @@ const jetbrains = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.medsys.com.br'),
+  alternates: {
+    canonical: '/'
+  },
   title: {
     default: 'MedSys - Software Médico na Nuvem | Gestão de Consultórios',
     template: '%s | MedSys'
@@ -73,9 +81,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1
     }
-  },
-  icons: {
-    icon: '/assets/FAVICON.png'
   }
 }
 
@@ -89,7 +94,17 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable} font-sans antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <WhatsAppButton />
+        </ThemeProvider>
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+        <JsonLd />
       </body>
     </html>
   )
