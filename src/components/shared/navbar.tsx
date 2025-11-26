@@ -1,6 +1,7 @@
 'use client'
 
 import { Logo } from '@/components/shared/logo'
+import { ThemeToggle } from '@/components/shared/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -9,10 +10,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const NAV_LINKS = [
-  { label: 'Funcionalidades', href: '#features' },
-  { label: 'Benefícios', href: '#benefits' },
-  { label: 'Preços', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' }
+  { label: 'Funcionalidades', href: '/#features' },
+  { label: 'Benefícios', href: '/#benefits' },
+  { label: 'Preços', href: '/#pricing' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Contato', href: '/contato' }
 ]
 
 export function Navbar() {
@@ -55,6 +57,7 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden items-center gap-4 md:flex">
+            <ThemeToggle />
             <Button variant="ghost" className="font-medium">
               Entrar
             </Button>
@@ -67,7 +70,7 @@ export function Navbar() {
           <button
             className="text-foreground p-2 md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Menu"
+            aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -99,6 +102,9 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="mt-4 flex flex-col gap-3">
+                <div className="flex justify-end">
+                  <ThemeToggle />
+                </div>
                 <Button variant="outline" className="w-full justify-center">
                   Entrar
                 </Button>
