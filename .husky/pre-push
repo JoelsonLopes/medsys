@@ -1,0 +1,29 @@
+#!/bin/sh
+
+echo "🔍 Running QA checks before push..."
+
+# Run formatting check
+echo "📝 Checking code formatting..."
+npm run format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Code formatting check failed! Run 'npm run format' to fix."
+  exit 1
+fi
+
+# Run linting
+echo "🔎 Running ESLint..."
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "❌ Linting failed! Run 'npm run lint:fix' to fix auto-fixable issues."
+  exit 1
+fi
+
+# Run type checking
+echo "🔷 Checking TypeScript types..."
+NODE_OPTIONS="--max-old-space-size=4096" npm run type-check
+if [ $? -ne 0 ]; then
+  echo "❌ TypeScript type checking failed! Fix type errors before pushing."
+  exit 1
+fi
+
+echo "✅ All QA checks passed! Proceeding with push..."

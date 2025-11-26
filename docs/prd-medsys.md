@@ -16,9 +16,11 @@
 ## 1. Visão Geral do Projeto
 
 ### 1.1 Objetivo
+
 Desenvolver uma landing page moderna, tecnológica e de alta conversão para o software médico MedSys, substituindo o site atual em reformulação. A página deve transmitir confiança, inovação e profissionalismo para profissionais de saúde.
 
 ### 1.2 Problema a Resolver
+
 - Site atual desatualizado e em reformulação
 - Necessidade de aumentar conversões (leads e demonstrações)
 - Posicionamento competitivo frente a concorrentes como iClinic, Feegow e GestãoDS
@@ -213,7 +215,7 @@ export const FeatureCard: FC<FeatureCardProps> = ({
       )}
     >
       {/* Glow effect on hover */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
 
       <div className="relative z-10">
         <div className="mb-4 text-primary">{icon}</div>
@@ -241,28 +243,28 @@ const colors = {
     200: '#bfdbfe',
     300: '#93c5fd',
     400: '#60a5fa',
-    500: '#3b82f6',  // Principal
+    500: '#3b82f6', // Principal
     600: '#2563eb',
     700: '#1d4ed8',
     800: '#1e40af',
     900: '#1e3a8a',
-    950: '#172554',
+    950: '#172554'
   },
 
   // Secundária - Verde saúde/sucesso
   secondary: {
     50: '#ecfdf5',
     100: '#d1fae5',
-    500: '#10b981',  // Principal
+    500: '#10b981', // Principal
     600: '#059669',
-    700: '#047857',
+    700: '#047857'
   },
 
   // Accent - Cyan tecnológico
   accent: {
     400: '#22d3ee',
     500: '#06b6d4',
-    600: '#0891b2',
+    600: '#0891b2'
   },
 
   // Backgrounds
@@ -270,7 +272,7 @@ const colors = {
     DEFAULT: '#ffffff',
     dark: '#0a0a0f',
     card: '#f8fafc',
-    cardDark: '#111827',
+    cardDark: '#111827'
   }
 }
 ```
@@ -383,6 +385,7 @@ Comportamento:
 ```
 
 **Especificações:**
+
 - Background: Gradient mesh animado + particles sutis
 - Headline: Texto com gradient animado ou typewriter effect
 - Mockup: Imagem com parallax ou 3D tilt no hover
@@ -412,6 +415,7 @@ Comportamento:
 ```
 
 **Especificações:**
+
 - Cards com ícones em vermelho/laranja (cor de "problema")
 - Animação: Fade in on scroll, staggered
 - Quote com destaque visual
@@ -530,6 +534,7 @@ Funcionalidades a destacar:
 ```
 
 **Especificações:**
+
 - Cards com efeito glassmorphism
 - Ícones animados (Lottie ou SVG animado)
 - Hover: Efeito glow + scale sutil
@@ -558,6 +563,7 @@ Funcionalidades a destacar:
 ```
 
 **Especificações:**
+
 - Steps conectados com linha animada (draw on scroll)
 - Números com circle + gradient border
 - Animação sequencial no scroll
@@ -595,6 +601,7 @@ Funcionalidades a destacar:
 ```
 
 **Especificações:**
+
 - Carousel com Embla (touch-friendly)
 - Cards com foto + depoimento + credenciais
 - Stats com counter animado
@@ -638,6 +645,7 @@ Funcionalidades a destacar:
 ```
 
 **Especificações:**
+
 - Plano popular com destaque (border gradient, badge)
 - Toggle mensal/anual com animação de preço
 - Comparison table expandível (opcional)
@@ -679,6 +687,7 @@ Funcionalidades a destacar:
 ```
 
 **Especificações:**
+
 - Accordion com animação suave (Radix/ShadCN)
 - Ícone rotativo no expand
 - Search opcional para muitas perguntas
@@ -714,6 +723,7 @@ Funcionalidades a destacar:
 ```
 
 **Especificações:**
+
 - Background com gradient forte (primary → accent)
 - Form integrado com Formspree
 - Validação com React Hook Form + Zod
@@ -855,8 +865,12 @@ export function GradientBlur() {
 }
 
 @keyframes grid-move {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
 }
 ```
 
@@ -918,7 +932,7 @@ export function AnimatedBorderCard({ children }: { children: React.ReactNode }) 
     <div className="relative group">
       {/* Animated gradient border */}
       <div
-        className="absolute -inset-0.5 bg-gradient-to-r from-primary via-secondary to-accent
+        className="absolute -inset-0.5 bg-linear-to-r from-primary via-secondary to-accent
                    rounded-2xl blur opacity-30 group-hover:opacity-100
                    transition duration-1000 group-hover:duration-200
                    animate-gradient-xy"
@@ -979,23 +993,16 @@ export const contactFormSchema = z.object({
     .min(2, 'Nome deve ter pelo menos 2 caracteres')
     .max(100, 'Nome muito longo'),
 
-  email: z
-    .string()
-    .email('E-mail inválido'),
+  email: z.string().email('E-mail inválido'),
 
   whatsapp: z
     .string()
     .regex(/^\(\d{2}\)\s?\d{4,5}-?\d{4}$/, 'WhatsApp inválido')
     .optional(),
 
-  especialidade: z
-    .string()
-    .min(1, 'Selecione uma especialidade'),
+  especialidade: z.string().min(1, 'Selecione uma especialidade'),
 
-  mensagem: z
-    .string()
-    .max(1000, 'Mensagem muito longa')
-    .optional()
+  mensagem: z.string().max(1000, 'Mensagem muito longa').optional()
 })
 
 export type ContactFormData = z.infer<typeof contactFormSchema>
@@ -1167,7 +1174,8 @@ export const metadata: Metadata = {
     template: '%s | MedSys'
   },
 
-  description: 'Software médico completo para gestão de consultórios e clínicas. Prontuário eletrônico, agenda inteligente, telemedicina e gestão financeira em um só lugar. Teste grátis por 14 dias.',
+  description:
+    'Software médico completo para gestão de consultórios e clínicas. Prontuário eletrônico, agenda inteligente, telemedicina e gestão financeira em um só lugar. Teste grátis por 14 dias.',
 
   keywords: [
     'software médico',
@@ -1191,7 +1199,8 @@ export const metadata: Metadata = {
     url: 'https://www.medsys.com.br',
     siteName: 'MedSys',
     title: 'MedSys - Software Médico na Nuvem',
-    description: 'Gerencie seu consultório de qualquer lugar. Prontuário, agenda e financeiro integrados.',
+    description:
+      'Gerencie seu consultório de qualquer lugar. Prontuário, agenda e financeiro integrados.',
     images: [
       {
         url: '/og-image.png',
@@ -1222,7 +1231,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: 'GOOGLE_VERIFICATION_CODE',
+    google: 'GOOGLE_VERIFICATION_CODE'
   }
 }
 ```
@@ -1381,11 +1390,11 @@ export const trackEvent = (
 ```typescript
 // tailwind.config.ts
 const screens = {
-  'sm': '640px',   // Mobile landscape
-  'md': '768px',   // Tablet
-  'lg': '1024px',  // Desktop
-  'xl': '1280px',  // Large desktop
-  '2xl': '1536px', // Extra large
+  sm: '640px', // Mobile landscape
+  md: '768px', // Tablet
+  lg: '1024px', // Desktop
+  xl: '1280px', // Large desktop
+  '2xl': '1536px' // Extra large
 }
 ```
 
@@ -1419,7 +1428,7 @@ const screens = {
 // vercel.json
 {
   "framework": "nextjs",
-  "regions": ["gru1"],  // São Paulo
+  "regions": ["gru1"], // São Paulo
   "headers": [
     {
       "source": "/(.*)",
@@ -1460,6 +1469,7 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 ## 13. Timeline Estimado
 
 ### Fase 1: Setup e Estrutura (2-3 dias)
+
 - [ ] Inicializar projeto Next.js 15
 - [ ] Configurar Tailwind + ShadCN
 - [ ] Setup ESLint, Prettier, Husky
@@ -1467,12 +1477,14 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 - [ ] Design tokens (cores, tipografia)
 
 ### Fase 2: Componentes Base (3-4 dias)
+
 - [ ] Navbar responsiva
 - [ ] Componentes UI (Button, Card, Input, etc.)
 - [ ] Efeitos visuais (particles, gradients)
 - [ ] Animações base (Framer Motion)
 
 ### Fase 3: Seções da Landing (5-7 dias)
+
 - [ ] Hero Section
 - [ ] Problem/Solution
 - [ ] Features (com tabs)
@@ -1485,12 +1497,14 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 - [ ] Footer
 
 ### Fase 4: Integrações (2-3 dias)
+
 - [ ] Formulário Formspree
 - [ ] Analytics (GA4)
 - [ ] SEO/Meta tags
 - [ ] Structured Data
 
 ### Fase 5: Polish e QA (2-3 dias)
+
 - [ ] Responsividade completa
 - [ ] Testes de performance
 - [ ] Acessibilidade
@@ -1498,6 +1512,7 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 - [ ] Bug fixes
 
 ### Fase 6: Deploy (1 dia)
+
 - [ ] Setup Vercel
 - [ ] Configurar domínio
 - [ ] SSL/Security headers
@@ -1510,6 +1525,7 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 ## 14. Checklist de Entrega
 
 ### Funcional
+
 - [ ] Todas as seções implementadas
 - [ ] Navegação funcionando
 - [ ] Formulário enviando dados
@@ -1517,12 +1533,14 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 - [ ] Dark mode (se aplicável)
 
 ### Performance
+
 - [ ] Lighthouse Score > 90
 - [ ] First Contentful Paint < 1.5s
 - [ ] Time to Interactive < 3s
 - [ ] Cumulative Layout Shift < 0.1
 
 ### SEO
+
 - [ ] Meta tags completas
 - [ ] Open Graph configurado
 - [ ] Sitemap gerado
@@ -1530,12 +1548,14 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 - [ ] Structured Data válido
 
 ### Acessibilidade
+
 - [ ] WCAG 2.1 AA compliance
 - [ ] Keyboard navigation
 - [ ] Screen reader tested
 - [ ] Contraste adequado
 
 ### Cross-Browser
+
 - [ ] Chrome (latest)
 - [ ] Firefox (latest)
 - [ ] Safari (latest)
@@ -1548,6 +1568,7 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 ## 15. Referências de Design
 
 ### Inspirações de Landing Pages Tech/SaaS
+
 1. Linear.app - Clean, minimalista, animações sutis
 2. Vercel.com - Gradientes, grid patterns
 3. Stripe.com - Gradientes vibrantes, ilustrações
@@ -1555,6 +1576,7 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 5. Raycast.com - Dark mode, glassmorphism
 
 ### Recursos
+
 - [Tailwind UI](https://tailwindui.com) - Componentes premium
 - [Aceternity UI](https://ui.aceternity.com) - Efeitos modernos
 - [Magic UI](https://magicui.design) - Componentes animados
@@ -1564,13 +1586,13 @@ NEXT_PUBLIC_CLARITY_ID=your_clarity_id
 
 ## 16. Contatos e Responsáveis
 
-| Papel            | Nome        | Contato               |
-| ---------------- | ----------- | --------------------- |
-| Cliente          | MedSys Ltda | suporte@medsys.com.br |
-| Telefone         | -           | (51) 99961-7746       |
-| Desenvolvido por | Joelson Lopes  | joelsonlopes85@gmail.com |
+| Papel            | Nome          | Contato                  |
+| ---------------- | ------------- | ------------------------ |
+| Cliente          | MedSys Ltda   | suporte@medsys.com.br    |
+| Telefone         | -             | (51) 99961-7746          |
+| Desenvolvido por | Joelson Lopes | joelsonlopes85@gmail.com |
 
 ---
 
-*Documento criado em Novembro/2025*
-*Última atualização: v1.0.0*
+_Documento criado em Novembro/2025_
+_Última atualização: v1.0.0_
